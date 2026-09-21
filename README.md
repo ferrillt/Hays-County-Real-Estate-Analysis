@@ -152,7 +152,7 @@ The original Freddie Mac and Realtor.com files are not included in this reposito
 
 ### Project Data Folder
 
-Place the downloaded source files in the project’s `data` folder:
+After downloading the repository and obtaining the two original datasets, the local project folder should have the following structure:  
 
 ```text
 Hays-County-Real-Estate-Analysis/
@@ -168,23 +168,23 @@ Hays-County-Real-Estate-Analysis/
 │   ├── realtor_hays_county.csv
 │   └── hays_county_modeling_data.csv
 └── images/
-│   ├── ActualBaselineForecasts_TestPeriod.png
-│   ├── ActualPredictedMedianDaysOnMarket.png
-│   ├── BaselineForecasts.png
-│   ├── CorrelationAmongHousing-MarketVariables.png
-│   ├── ForecastErrorByModel.png
-│   ├── ForecastSummary.png
-│   ├── ImprovementOverBaseline.png
-│   ├── MedianDayOnMarket_CalendarMonth.png
-│   ├── MedianDaysOnMarket.png
-│   ├── MedianDaysOnMarket_Average30YrFixedMortgageRate.png
-│   ├── ModelBaselineForecast.png
-│   ├── ResidualResults.png
-│   ├── RidgeCoefficients.png
-│   ├── RidgeRegressionErrorsDuringTestPeriod.png
-│   ├── SensitivityResults.png
-│   ├── StandardizedRidgeRegressionCoefficients.png
-│   └── TestPeriodPrediction.png
+    ├── ActualBaselineForecasts_TestPeriod.png
+    ├── ActualPredictedMedianDaysOnMarket.png
+    ├── BaselineForecasts.png
+    ├── CorrelationAmongHousing-MarketVariables.png
+    ├── ForecastErrorByModel.png
+    ├── ForecastSummary.png
+    ├── ImprovementOverBaseline.png
+    ├── MedianDayOnMarket_CalendarMonth.png
+    ├── MedianDaysOnMarket.png
+    ├── MedianDaysOnMarket_Average30YrFixedMortgageRate.png
+    ├── ModelBaselineForecast.png
+    ├── ResidualResults.png
+    ├── RidgeCoefficients.png
+    ├── RidgeRegressionErrorsDuringTestPeriod.png
+    ├── SensitivityResults.png
+    ├── StandardizedRidgeRegressionCoefficients.png
+    └── TestPeriodPrediction.png
 ```
 
 The first two data files must be downloaded separately and are excluded from GitHub. The remaining three data files are created by the notebook and included in the repository.  
@@ -260,7 +260,7 @@ data/realtor_hays_county.csv
 The merge section:
 
 1. Loads the two prepared datasets.
-2. standardizes the `month_date_yyyymm` field.
+2. Standardizes the `month_date_yyyymm` field.
 3. Joins the datasets by month.
 4. Uses one-to-one validation to confirm that each month has only one matching record in each dataset.
 5. Checks for unmatched mortgage-rate records.
@@ -289,11 +289,8 @@ The analysis uses:
 
 ## Running the Analysis
 
-After placing both original source files in the `data` folder, open:
-
-```text
-[Open the analysis notebook](analysis/HaysCountyRealEstateAnalysis.ipynb)
-```
+After placing both original source files in the `data` folder, open the
+[analysis notebook](analysis/HaysCountyRealEstateAnalysis.ipynb).
 
 Run the notebook in order from the first cell through the final cell.
 
@@ -339,7 +336,7 @@ Possible extensions include:
 
 ## Author  
 
-**Teresa Ferrill**
+**Teresa Ferrill**  
 
-[GitHub Portfolio](https://github.com/ferrillt)
-[Hays County Real Estate Analysis Repository](https://github.com/ferrillt/Hays-County-Real-Estate-Analysis)
+- [GitHub Portfolio](https://github.com/ferrillt)
+- [Hays County Real Estate Analysis Repository](https://github.com/ferrillt/Hays-County-Real-Estate-Analysis)
