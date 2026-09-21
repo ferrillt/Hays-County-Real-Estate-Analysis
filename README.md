@@ -79,7 +79,7 @@ Hays-County-Real-Estate-Analysis/
     ├── ActualBaselineForecasts_TestPeriod.png
     ├── ActualPredictedMedianDaysOnMarket.png
     ├── BaselineForecasts.png
-    ├── CorrelationAmontHousing-MarketVariables.png
+    ├── CorrelationAmongHousing-MarketVariables.png
     ├── ForecastErrorByModel.png
     ├── ForecastSummary.png
     ├── ImprovementOverBaseline.png
@@ -202,7 +202,7 @@ The analysis uses:
 After placing both original source files in the `data` folder, open:
 
 ```text
-HaysCountyRealEstateAnalysis.ipynb
+analysis/HaysCountyRealEstateAnalysis.ipynb
 ```
 
 Run the notebook in order from the first cell through the final cell.
@@ -323,8 +323,6 @@ Hays-County-Real-Estate-Analysis/
 └── images/
     └── project visualizations
 ```
-
-Update this structure if the repository uses different folder or image names.
 
 ## Future Improvements
 
