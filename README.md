@@ -57,76 +57,98 @@ The combined dataset contains 122 monthly observations from July 2016 through Au
 
 The first 97 observations were used for training. The final 24 observations, representing target months from September 2024 through August 2026, were reserved for testing.
 
+## Analytical Methods
+
+The analysis compares three models:
+
+* Linear regression
+* Ridge regression
+* Constrained random forest
+
+The models are evaluated against two basic forecasting methods:
+
+* Previous-month baseline
+* Prior-year seasonal baseline
+
+The observations remain in chronological order. Time-series cross-validation is used when tuning the ridge and random-forest models so that later observations do not influence predictions for earlier months.
+
+Model performance is evaluated using:
+
+* Mean absolute error
+* Root mean squared error
+* R-squared
+
+## Results
+
+Ridge regression produced the strongest performance during the 24-month test period.
+
+| Method                    |   MAE |  RMSE |    R² |
+| ------------------------- | ----: | ----: | ----: |
+| Ridge regression          |  4.64 |  6.02 | 0.820 |
+| Linear regression         |  6.01 |  7.26 | 0.737 |
+| Previous-month baseline   |  7.21 |  9.26 | 0.573 |
+| Seasonal baseline         |  8.71 | 10.17 | 0.486 |
+| Constrained random forest | 10.93 | 13.29 | 0.121 |
+
+Ridge regression reduced mean absolute error by 35.7% compared with the previous-month baseline. The results also showed that additional model complexity did not improve prediction accuracy for this relatively small dataset.
+
+Current median days on market and active listing count had the strongest positive relationships with the ridge forecast. New listings, seasonal measures, and pending ratio also contributed to the prediction. These relationships describe associations within the model and should not be interpreted as causal effects.
+
+## September 2026 Forecast
+
+After model evaluation, the ridge model was refitted using all 121 observations with known outcomes. August 2026 market conditions were then used to produce the September 2026 forecast.
+
+| Measure                         | Result                 |
+| ------------------------------- | ---------------------- |
+| Forecast month                  | September 2026         |
+| Predicted median days on market | 82.5 days              |
+| August 2026 actual value        | 78 days                |
+| Expected monthly change         | +4.5 days              |
+| Test-period MAE                 | Approximately 4.6 days |
+
+The forecast suggests a somewhat slower county-level market. Sellers may need to prepare for a longer marketing period, while buyers may have more time to evaluate properties and negotiate. The forecast is an estimate rather than a guaranteed result.
+
+## Assumptions and Limitations
+
+The analysis assumes that the source measurements remained reasonably consistent over time and that monthly mortgage-rate averages represent general financing conditions. It also assumes that current-month housing measures would be available before the following month’s forecast is generated.
+
+Important limitations include:
+
+* The sample contains only 122 monthly observations.
+* The 24-month test set represents one historical period.
+* Realtor.com data describe publicly listed properties and may not include off-market transactions.
+* County-level measurements may hide differences among Kyle, Buda, San Marcos, and rural communities.
+* The model does not include property condition, exact location, school district, property type, or price range.
+* Sudden economic or market changes could weaken relationships learned from historical data.
+* The model estimates county-level market speed and cannot predict the selling time of an individual home.
+
+## Ethical Considerations
+
+The forecast could be misleading if it is presented as a guarantee or used without explaining its limitations. Each forecast should therefore include information about the model’s historical error and should be considered alongside professional judgment.
+
+Protected characteristics were not included in the model. The results should not be used to target, exclude, or treat people differently based on a protected characteristic. The appropriate purpose of the model is to provide general information about county-level housing-market conditions.
+
+The source datasets are public, aggregated, and do not contain individual-level personal information.
+
+## Conclusion  
+
+The analysis found that housing-market measures can support a useful one-month-ahead forecast of median days on market for Hays County. Ridge regression produced the best test-period results, with an MAE of 4.64 days, and performed better than both baseline methods. The September 2026 forecast of 82.5 days suggests that homes may remain on the market somewhat longer than they did in August. Although the model cannot predict the selling time of an individual property, it can provide additional context for county-level market discussions.
+
+## Recommendations
+
+Real estate professionals can use the forecast when discussing pricing, marketing periods, negotiations, and client expectations. Each forecast should be presented as an estimate and include information about the model’s historical error. Unusual changes should be reviewed before results are shared with clients. The forecast should supplement a comparative market analysis and professional knowledge of the property and local community rather than replace them.
+
+Future development should consider city-level forecasts for Kyle, Buda, and San Marcos, as well as separate models by property type or price range. Additional economic and housing measures could also be evaluated. Prediction intervals and testing across multiple historical periods would provide a better understanding of forecast uncertainty and stability.
+
+## Implementation Plan
+
+The process can be updated monthly when new Realtor.com and Freddie Mac observations become available. The new data should pass through the same preparation and validation steps documented in the notebook. After the data have been checked, the ridge model can be retrained and used to generate the following month’s forecast.
+
+A dashboard or CRM report could display the latest actual value, next-month forecast, expected change, historical test error, and a brief explanation for clients. An analyst or broker should review the results before distribution, especially when the forecast shows an unusually large monthly change. Model performance should also be reviewed periodically to determine whether the predictors, training period, or modeling approach need to be updated.
+
 ## Obtaining and Preparing the Data
 
 The original Freddie Mac and Realtor.com files are not included in this repository. The Realtor.com national county file exceeds GitHub’s normal file-size limit. Both original files must be downloaded from their publishers before the complete data-preparation process can be reproduced.
-
-### Project Data Folder
-
-Place the downloaded source files in the project’s `data` folder:
-
-```text
-Hays-County-Real-Estate-Analysis/
-├── .gitignore
-├── README.md
-├── requirements.txt
-├── analysis/
-│   └── HaysCountyRealEstateAnalysis.ipynb
-├── data/
-│   ├── freddie_mac_monthly.csv
-│   ├── realtor_hays_county.csv
-│   └── hays_county_modeling_data.csv
-└── images/
-│   ├── ActualBaselineForecasts_TestPeriod.png
-│   ├── ActualPredictedMedianDaysOnMarket.png
-│   ├── BaselineForecasts.png
-│   ├── CorrelationAmongHousing-MarketVariables.png
-│   ├── ForecastErrorByModel.png
-│   ├── ForecastSummary.png
-│   ├── ImprovementOverBaseline.png
-│   ├── MedianDayOnMarket_CalendarMonth.png
-│   ├── MedianDaysOnMarket.png
-│   ├── MedianDaysOnMarket_Average30YrFixedMortgageRate.png
-│   ├── ModelBaselineForecast.png
-│   ├── ResidualResults.png
-│   ├── RidgeCoefficients.png
-│   ├── RidgeRegressionErrorsDuringTestPeriod.png
-│   ├── SensitivityResults.png
-│   ├── StandardizedRidgeRegressionCoefficients.png
-│   └── TestPeriodPrediction.png
-```
-
-The first two files are downloaded source files. The final three files are created by the notebook.
-
-### Download the Freddie Mac Dataset
-
-1. Open the [Freddie Mac Primary Mortgage Market Survey](https://www.freddiemac.com/pmms).
-2. Locate and download the historical weekly mortgage-rate data.
-3. If the data are provided as an Excel workbook, save the applicable worksheet as a CSV file.
-4. Name the file:
-
-```text
-FreddieMac_1971-2026_historicalweeklydata.csv
-```
-
-5. Place the file in the `data` folder.
-
-The notebook reads the `Week` and `FRM` fields. The first two rows are skipped because they contain headings rather than data.
-
-### Download the Realtor.com Dataset
-
-1. Open the [Realtor.com Residential Real Estate Data Library](https://www.realtor.com/research/data/).
-2. Locate the monthly housing inventory data.
-3. Download the county-level historical inventory file.
-4. Rename the file, if necessary, to:
-
-```text
-RDC_Inventory_Core_Metrics_County_History.csv
-```
-
-5. Place the file in the `data` folder.
-
-The notebook imports only the required columns and filters the national dataset to Hays County using FIPS code `48209`.
 
 ## Creating the Prepared Datasets
 
@@ -208,95 +230,6 @@ Run the notebook in order from the first cell through the final cell.
 
 Running the cells sequentially is important because later sections depend on dataframes, variables, model settings, and results created earlier in the notebook. The notebook recreates the three prepared CSV files before completing the exploratory analysis and forecasting models.
 
-## Analytical Methods
-
-The analysis compares three models:
-
-* Linear regression
-* Ridge regression
-* Constrained random forest
-
-The models are evaluated against two basic forecasting methods:
-
-* Previous-month baseline
-* Prior-year seasonal baseline
-
-The observations remain in chronological order. Time-series cross-validation is used when tuning the ridge and random-forest models so that later observations do not influence predictions for earlier months.
-
-Model performance is evaluated using:
-
-* Mean absolute error
-* Root mean squared error
-* R-squared
-
-## Results
-
-Ridge regression produced the strongest performance during the 24-month test period.
-
-| Method                    |   MAE |  RMSE |    R² |
-| ------------------------- | ----: | ----: | ----: |
-| Ridge regression          |  4.64 |  6.02 | 0.820 |
-| Linear regression         |  6.01 |  7.26 | 0.737 |
-| Previous-month baseline   |  7.21 |  9.26 | 0.573 |
-| Seasonal baseline         |  8.71 | 10.17 | 0.486 |
-| Constrained random forest | 10.93 | 13.29 | 0.121 |
-
-Ridge regression reduced mean absolute error by 35.7% compared with the previous-month baseline. The results also showed that additional model complexity did not improve prediction accuracy for this relatively small dataset.
-
-Current median days on market and active listing count had the strongest positive relationships with the ridge forecast. New listings, seasonal measures, and pending ratio also contributed to the prediction. These relationships describe associations within the model and should not be interpreted as causal effects.
-
-## September 2026 Forecast
-
-After model evaluation, the ridge model was refitted using all 121 observations with known outcomes. August 2026 market conditions were then used to produce the September 2026 forecast.
-
-| Measure                         | Result                 |
-| ------------------------------- | ---------------------- |
-| Forecast month                  | September 2026         |
-| Predicted median days on market | 82.5 days              |
-| August 2026 actual value        | 78 days                |
-| Expected monthly change         | +4.5 days              |
-| Test-period MAE                 | Approximately 4.6 days |
-
-The forecast suggests a somewhat slower county-level market. Sellers may need to prepare for a longer marketing period, while buyers may have more time to evaluate properties and negotiate. The forecast is an estimate rather than a guaranteed result.
-
-## Conclusion  
-
-The analysis found that housing-market measures can support a useful one-month-ahead forecast of median days on market for Hays County. Ridge regression produced the best test-period results, with an MAE of 4.64 days, and performed better than both baseline methods. The September 2026 forecast of 82.5 days suggests that homes may remain on the market somewhat longer than they did in August. Although the model cannot predict the selling time of an individual property, it can provide additional context for county-level market discussions.
-
-## Recommendations
-
-Real estate professionals can use the forecast when discussing pricing, marketing periods, negotiations, and client expectations. Each forecast should be presented as an estimate and include information about the model’s historical error. Unusual changes should be reviewed before results are shared with clients. The forecast should supplement a comparative market analysis and professional knowledge of the property and local community rather than replace them.
-
-Future development should consider city-level forecasts for Kyle, Buda, and San Marcos, as well as separate models by property type or price range. Additional economic and housing measures could also be evaluated. Prediction intervals and testing across multiple historical periods would provide a better understanding of forecast uncertainty and stability.
-
-## Implementation Plan
-
-The process can be updated monthly when new Realtor.com and Freddie Mac observations become available. The new data should pass through the same preparation and validation steps documented in the notebook. After the data have been checked, the ridge model can be retrained and used to generate the following month’s forecast.
-
-A dashboard or CRM report could display the latest actual value, next-month forecast, expected change, historical test error, and a brief explanation for clients. An analyst or broker should review the results before distribution, especially when the forecast shows an unusually large monthly change. Model performance should also be reviewed periodically to determine whether the predictors, training period, or modeling approach need to be updated.
-
-## Assumptions and Limitations
-
-The analysis assumes that the source measurements remained reasonably consistent over time and that monthly mortgage-rate averages represent general financing conditions. It also assumes that current-month housing measures would be available before the following month’s forecast is generated.
-
-Important limitations include:
-
-* The sample contains only 122 monthly observations.
-* The 24-month test set represents one historical period.
-* Realtor.com data describe publicly listed properties and may not include off-market transactions.
-* County-level measurements may hide differences among Kyle, Buda, San Marcos, and rural communities.
-* The model does not include property condition, exact location, school district, property type, or price range.
-* Sudden economic or market changes could weaken relationships learned from historical data.
-* The model estimates county-level market speed and cannot predict the selling time of an individual home.
-
-## Ethical Considerations
-
-The forecast could be misleading if it is presented as a guarantee or used without explaining its limitations. Each forecast should therefore include information about the model’s historical error and should be considered alongside professional judgment.
-
-Protected characteristics were not included in the model. The results should not be used to target, exclude, or treat people differently based on a protected characteristic. The appropriate purpose of the model is to provide general information about county-level housing-market conditions.
-
-The source datasets are public, aggregated, and do not contain individual-level personal information.
-
 ## Files Excluded from GitHub
 
 The following original source files should not be committed to the repository:
@@ -335,7 +268,77 @@ Possible extensions include:
 * Testing the model across additional rolling historical periods
 * Presenting the forecast through a CRM dashboard
 
-## Author
+### Project Data Folder
+
+Place the downloaded source files in the project’s `data` folder:
+
+```text
+Hays-County-Real-Estate-Analysis/
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── analysis/
+│   └── HaysCountyRealEstateAnalysis.ipynb
+├── data/
+│   ├── FreddieMac_1971-2026_historicalweeklydata.csv
+│   ├── RDC_Inventory_Core_Metrics_County_History.csv
+│   ├── freddie_mac_monthly.csv
+│   ├── realtor_hays_county.csv
+│   └── hays_county_modeling_data.csv
+└── images/
+│   ├── ActualBaselineForecasts_TestPeriod.png
+│   ├── ActualPredictedMedianDaysOnMarket.png
+│   ├── BaselineForecasts.png
+│   ├── CorrelationAmongHousing-MarketVariables.png
+│   ├── ForecastErrorByModel.png
+│   ├── ForecastSummary.png
+│   ├── ImprovementOverBaseline.png
+│   ├── MedianDayOnMarket_CalendarMonth.png
+│   ├── MedianDaysOnMarket.png
+│   ├── MedianDaysOnMarket_Average30YrFixedMortgageRate.png
+│   ├── ModelBaselineForecast.png
+│   ├── ResidualResults.png
+│   ├── RidgeCoefficients.png
+│   ├── RidgeRegressionErrorsDuringTestPeriod.png
+│   ├── SensitivityResults.png
+│   ├── StandardizedRidgeRegressionCoefficients.png
+│   └── TestPeriodPrediction.png
+```
+
+The first two data files must be downloaded separately and are excluded from GitHub. The remaining three data files are created by the notebook and included in the repository.  
+
+### Download the Freddie Mac Dataset
+
+1. Open the [Freddie Mac Primary Mortgage Market Survey](https://www.freddiemac.com/pmms).
+2. Locate and download the historical weekly mortgage-rate data.
+3. If the data are provided as an Excel workbook, save the applicable worksheet as a CSV file.
+4. Name the file:
+
+```text
+FreddieMac_1971-2026_historicalweeklydata.csv
+```
+
+5. Place the file in the `data` folder.
+
+The notebook reads the `Week` and `FRM` fields. The first two rows are skipped because they contain headings rather than data.
+
+### Download the Realtor.com Dataset
+
+1. Open the [Realtor.com Residential Real Estate Data Library](https://www.realtor.com/research/data/).
+2. Locate the monthly housing inventory data.
+3. Download the county-level historical inventory file.
+4. Rename the file, if necessary, to:
+
+```text
+RDC_Inventory_Core_Metrics_County_History.csv
+```
+
+5. Place the file in the `data` folder.
+
+The notebook imports only the required columns and filters the national dataset to Hays County using FIPS code `48209`.
+
+
+## Author  
 
 **Teresa Ferrill**
 
