@@ -280,7 +280,7 @@ data/FreddieMac_1971-2026_historicalweeklydata.csv
 data/RDC_Inventory_Core_Metrics_County_History.csv
 ```
 
-The following smaller prepared datasets may be included:
+The following smaller prepared datasets are included:
 
 ```text
 data/freddie_mac_monthly.csv
