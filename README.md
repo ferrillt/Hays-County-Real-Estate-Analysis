@@ -223,7 +223,7 @@ The analysis uses:
 After placing both original source files in the `data` folder, open:
 
 ```text
-analysis/HaysCountyRealEstateAnalysis.ipynb
+[Open the analysis notebook](analysis/HaysCountyRealEstateAnalysis.ipynb)
 ```
 
 Run the notebook in order from the first cell through the final cell.
@@ -239,7 +239,7 @@ data/FreddieMac_1971-2026_historicalweeklydata.csv
 data/RDC_Inventory_Core_Metrics_County_History.csv
 ```
 
-The repository’s `.gitignore` file should contain:
+The repository’s `.gitignore` file contains:
 
 ```gitignore
 # Original source datasets downloaded separately
