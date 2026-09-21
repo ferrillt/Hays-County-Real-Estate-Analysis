@@ -67,14 +67,15 @@ Place the downloaded source files in the project’s `data` folder:
 
 ```text
 Hays-County-Real-Estate-Analysis/
-└── analysis
-    ├── HaysCountyRealEstateAnalysis.ipynb
-└── data/
-    ├── FreddieMac_1971-2026_historicalweeklydata.csv
-    ├── RDC_Inventory_Core_Metrics_County_History.csv
-    ├── freddie_mac_monthly.csv
-    ├── realtor_hays_county.csv
-    └── hays_county_modeling_data.csv
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── analysis/
+│   └── HaysCountyRealEstateAnalysis.ipynb
+├── data/
+│   ├── freddie_mac_monthly.csv
+│   ├── realtor_hays_county.csv
+│   └── hays_county_modeling_data.csv
 └── images/
     ├── ActualBaselineForecasts_TestPeriod.png
     ├── ActualPredictedMedianDaysOnMarket.png
@@ -93,8 +94,6 @@ Hays-County-Real-Estate-Analysis/
     ├── SensitivityResults.png
     ├── StandardizedRidgeRegressionCoefficients.png
     ├── TestPeriodPrediction.png
-├── README.md
-├── requirements.txt
 ```
 
 The first two files are downloaded source files. The final three files are created by the notebook.
