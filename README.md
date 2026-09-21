@@ -259,6 +259,22 @@ After model evaluation, the ridge model was refitted using all 121 observations 
 
 The forecast suggests a somewhat slower county-level market. Sellers may need to prepare for a longer marketing period, while buyers may have more time to evaluate properties and negotiate. The forecast is an estimate rather than a guaranteed result.
 
+## Conclusion  
+
+The analysis found that housing-market measures can support a useful one-month-ahead forecast of median days on market for Hays County. Ridge regression produced the best test-period results, with an MAE of 4.64 days, and performed better than both baseline methods. The September 2026 forecast of 82.5 days suggests that homes may remain on the market somewhat longer than they did in August. Although the model cannot predict the selling time of an individual property, it can provide additional context for county-level market discussions.
+
+## Recommendations
+
+Real estate professionals can use the forecast when discussing pricing, marketing periods, negotiations, and client expectations. Each forecast should be presented as an estimate and include information about the model’s historical error. Unusual changes should be reviewed before results are shared with clients. The forecast should supplement a comparative market analysis and professional knowledge of the property and local community rather than replace them.
+
+Future development should consider city-level forecasts for Kyle, Buda, and San Marcos, as well as separate models by property type or price range. Additional economic and housing measures could also be evaluated. Prediction intervals and testing across multiple historical periods would provide a better understanding of forecast uncertainty and stability.
+
+## Implementation Plan
+
+The process can be updated monthly when new Realtor.com and Freddie Mac observations become available. The new data should pass through the same preparation and validation steps documented in the notebook. After the data have been checked, the ridge model can be retrained and used to generate the following month’s forecast.
+
+A dashboard or CRM report could display the latest actual value, next-month forecast, expected change, historical test error, and a brief explanation for clients. An analyst or broker should review the results before distribution, especially when the forecast shows an unusually large monthly change. Model performance should also be reviewed periodically to determine whether the predictors, training period, or modeling approach need to be updated.
+
 ## Assumptions and Limitations
 
 The analysis assumes that the source measurements remained reasonably consistent over time and that monthly mortgage-rate averages represent general financing conditions. It also assumes that current-month housing measures would be available before the following month’s forecast is generated.
@@ -307,21 +323,6 @@ data/hays_county_modeling_data.csv
 ```
 
 Including the prepared files allows visitors to review the analysis without downloading the large national Realtor.com dataset. Anyone who wants to reproduce the entire data-preparation process can download both original files and run the notebook from the beginning.
-
-## Repository Contents
-
-```text
-Hays-County-Real-Estate-Analysis/
-├── HaysCountyRealEstateAnalysis.ipynb
-├── README.md
-├── requirements.txt
-├── data/
-│   ├── freddie_mac_monthly.csv
-│   ├── realtor_hays_county.csv
-│   └── hays_county_modeling_data.csv
-└── images/
-    └── project visualizations
-```
 
 ## Future Improvements
 
