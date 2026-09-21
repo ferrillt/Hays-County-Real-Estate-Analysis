@@ -1,0 +1,20 @@
+# Original source datasets downloaded separately
+data/FreddieMac_1971-2026_historicalweeklydata.csv
+data/RDC_Inventory_Core_Metrics_County_History.csv
+
+# Jupyter temporary files
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Python temporary files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Operating-system files
+.DS_Store
+Thumbs.db
