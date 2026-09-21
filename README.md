@@ -77,23 +77,23 @@ Hays-County-Real-Estate-Analysis/
 │   ├── realtor_hays_county.csv
 │   └── hays_county_modeling_data.csv
 └── images/
-    ├── ActualBaselineForecasts_TestPeriod.png
-    ├── ActualPredictedMedianDaysOnMarket.png
-    ├── BaselineForecasts.png
-    ├── CorrelationAmongHousing-MarketVariables.png
-    ├── ForecastErrorByModel.png
-    ├── ForecastSummary.png
-    ├── ImprovementOverBaseline.png
-    ├── MedianDayOnMarket_CalendarMonth.png
-    ├── MedianDaysOnMarket.png
-    ├── MedianDaysOnMarket_Average30YrFixedMortgageRate.png
-    ├── ModelBaselineForecast.png
-    ├── ResidualResults.png
-    ├── RidgeCoefficients.png
-    ├── RidgeRegressionErrorsDuringTestPeriod.png
-    ├── SensitivityResults.png
-    ├── StandardizedRidgeRegressionCoefficients.png
-    ├── TestPeriodPrediction.png
+│   ├── ActualBaselineForecasts_TestPeriod.png
+│   ├── ActualPredictedMedianDaysOnMarket.png
+│   ├── BaselineForecasts.png
+│   ├── CorrelationAmongHousing-MarketVariables.png
+│   ├── ForecastErrorByModel.png
+│   ├── ForecastSummary.png
+│   ├── ImprovementOverBaseline.png
+│   ├── MedianDayOnMarket_CalendarMonth.png
+│   ├── MedianDaysOnMarket.png
+│   ├── MedianDaysOnMarket_Average30YrFixedMortgageRate.png
+│   ├── ModelBaselineForecast.png
+│   ├── ResidualResults.png
+│   ├── RidgeCoefficients.png
+│   ├── RidgeRegressionErrorsDuringTestPeriod.png
+│   ├── SensitivityResults.png
+│   ├── StandardizedRidgeRegressionCoefficients.png
+│   └── TestPeriodPrediction.png
 ```
 
 The first two files are downloaded source files. The final three files are created by the notebook.
