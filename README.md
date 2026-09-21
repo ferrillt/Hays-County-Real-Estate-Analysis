@@ -150,6 +150,75 @@ A dashboard or CRM report could display the latest actual value, next-month fore
 
 The original Freddie Mac and Realtor.com files are not included in this repository. The Realtor.com national county file exceeds GitHub’s normal file-size limit. Both original files must be downloaded from their publishers before the complete data-preparation process can be reproduced.
 
+### Project Data Folder
+
+Place the downloaded source files in the project’s `data` folder:
+
+```text
+Hays-County-Real-Estate-Analysis/
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── analysis/
+│   └── HaysCountyRealEstateAnalysis.ipynb
+├── data/
+│   ├── FreddieMac_1971-2026_historicalweeklydata.csv
+│   ├── RDC_Inventory_Core_Metrics_County_History.csv
+│   ├── freddie_mac_monthly.csv
+│   ├── realtor_hays_county.csv
+│   └── hays_county_modeling_data.csv
+└── images/
+│   ├── ActualBaselineForecasts_TestPeriod.png
+│   ├── ActualPredictedMedianDaysOnMarket.png
+│   ├── BaselineForecasts.png
+│   ├── CorrelationAmongHousing-MarketVariables.png
+│   ├── ForecastErrorByModel.png
+│   ├── ForecastSummary.png
+│   ├── ImprovementOverBaseline.png
+│   ├── MedianDayOnMarket_CalendarMonth.png
+│   ├── MedianDaysOnMarket.png
+│   ├── MedianDaysOnMarket_Average30YrFixedMortgageRate.png
+│   ├── ModelBaselineForecast.png
+│   ├── ResidualResults.png
+│   ├── RidgeCoefficients.png
+│   ├── RidgeRegressionErrorsDuringTestPeriod.png
+│   ├── SensitivityResults.png
+│   ├── StandardizedRidgeRegressionCoefficients.png
+│   └── TestPeriodPrediction.png
+```
+
+The first two data files must be downloaded separately and are excluded from GitHub. The remaining three data files are created by the notebook and included in the repository.  
+
+### Download the Freddie Mac Dataset
+
+1. Open the [Freddie Mac Primary Mortgage Market Survey](https://www.freddiemac.com/pmms).
+2. Locate and download the historical weekly mortgage-rate data.
+3. If the data are provided as an Excel workbook, save the applicable worksheet as a CSV file.
+4. Name the file:
+
+```text
+FreddieMac_1971-2026_historicalweeklydata.csv
+```
+
+5. Place the file in the `data` folder.
+
+The notebook reads the `Week` and `FRM` fields. The first two rows are skipped because they contain headings rather than data.
+
+### Download the Realtor.com Dataset
+
+1. Open the [Realtor.com Residential Real Estate Data Library](https://www.realtor.com/research/data/).
+2. Locate the monthly housing inventory data.
+3. Download the county-level historical inventory file.
+4. Rename the file, if necessary, to:
+
+```text
+RDC_Inventory_Core_Metrics_County_History.csv
+```
+
+5. Place the file in the `data` folder.
+
+The notebook imports only the required columns and filters the national dataset to Hays County using FIPS code `48209`.
+
 ## Creating the Prepared Datasets
 
 The notebook creates three smaller datasets from the original source files.
@@ -267,76 +336,6 @@ Possible extensions include:
 * Calculating prediction intervals
 * Testing the model across additional rolling historical periods
 * Presenting the forecast through a CRM dashboard
-
-### Project Data Folder
-
-Place the downloaded source files in the project’s `data` folder:
-
-```text
-Hays-County-Real-Estate-Analysis/
-├── .gitignore
-├── README.md
-├── requirements.txt
-├── analysis/
-│   └── HaysCountyRealEstateAnalysis.ipynb
-├── data/
-│   ├── FreddieMac_1971-2026_historicalweeklydata.csv
-│   ├── RDC_Inventory_Core_Metrics_County_History.csv
-│   ├── freddie_mac_monthly.csv
-│   ├── realtor_hays_county.csv
-│   └── hays_county_modeling_data.csv
-└── images/
-│   ├── ActualBaselineForecasts_TestPeriod.png
-│   ├── ActualPredictedMedianDaysOnMarket.png
-│   ├── BaselineForecasts.png
-│   ├── CorrelationAmongHousing-MarketVariables.png
-│   ├── ForecastErrorByModel.png
-│   ├── ForecastSummary.png
-│   ├── ImprovementOverBaseline.png
-│   ├── MedianDayOnMarket_CalendarMonth.png
-│   ├── MedianDaysOnMarket.png
-│   ├── MedianDaysOnMarket_Average30YrFixedMortgageRate.png
-│   ├── ModelBaselineForecast.png
-│   ├── ResidualResults.png
-│   ├── RidgeCoefficients.png
-│   ├── RidgeRegressionErrorsDuringTestPeriod.png
-│   ├── SensitivityResults.png
-│   ├── StandardizedRidgeRegressionCoefficients.png
-│   └── TestPeriodPrediction.png
-```
-
-The first two data files must be downloaded separately and are excluded from GitHub. The remaining three data files are created by the notebook and included in the repository.  
-
-### Download the Freddie Mac Dataset
-
-1. Open the [Freddie Mac Primary Mortgage Market Survey](https://www.freddiemac.com/pmms).
-2. Locate and download the historical weekly mortgage-rate data.
-3. If the data are provided as an Excel workbook, save the applicable worksheet as a CSV file.
-4. Name the file:
-
-```text
-FreddieMac_1971-2026_historicalweeklydata.csv
-```
-
-5. Place the file in the `data` folder.
-
-The notebook reads the `Week` and `FRM` fields. The first two rows are skipped because they contain headings rather than data.
-
-### Download the Realtor.com Dataset
-
-1. Open the [Realtor.com Residential Real Estate Data Library](https://www.realtor.com/research/data/).
-2. Locate the monthly housing inventory data.
-3. Download the county-level historical inventory file.
-4. Rename the file, if necessary, to:
-
-```text
-RDC_Inventory_Core_Metrics_County_History.csv
-```
-
-5. Place the file in the `data` folder.
-
-The notebook imports only the required columns and filters the national dataset to Hays County using FIPS code `48209`.
-
 
 ## Author  
 
