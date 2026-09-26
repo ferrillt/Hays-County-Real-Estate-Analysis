@@ -167,7 +167,7 @@ Hays-County-Real-Estate-Analysis/
 │   ├── freddie_mac_monthly.csv
 │   ├── realtor_hays_county.csv
 │   └── hays_county_modeling_data.csv
-└── images/
+├── images/
     ├── ActualBaselineForecasts_TestPeriod.png
     ├── ActualPredictedMedianDaysOnMarket.png
     ├── BaselineForecasts.png
@@ -185,6 +185,8 @@ Hays-County-Real-Estate-Analysis/
     ├── SensitivityResults.png
     ├── StandardizedRidgeRegressionCoefficients.png
     └── TestPeriodPrediction.png
+└── presentation/
+    └── HaysCountyRealEstateAnalysisPresentation.pdf
 ```
 
 The first two data files must be downloaded separately and are excluded from GitHub. The remaining three data files are created by the notebook and included in the repository.  
