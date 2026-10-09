@@ -185,7 +185,7 @@ Hays-County-Real-Estate-Analysis/
     ├── SensitivityResults.png
     ├── StandardizedRidgeRegressionCoefficients.png
     └── TestPeriodPrediction.png
-└── presentation/
+└── presentations/
     └── HaysCountyRealEstateAnalysisPresentation.pdf
     └── HaysCountyRealEstateAnalysisPresentation_withAudio.pptx
 ```
