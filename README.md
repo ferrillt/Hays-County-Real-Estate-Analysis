@@ -6,6 +6,8 @@ This project examines whether housing-market conditions, mortgage rates, and sea
 
 The project follows an end-to-end data science process that includes data acquisition, preparation, exploratory analysis, baseline forecasting, model development, chronological validation, sensitivity testing, and interpretation of the final forecast.
 
+**Course:** DSC 680 — Applied Data Science
+
 ## Business Problem
 
 Historical housing reports describe conditions that have already occurred, but real estate professionals must also prepare clients for upcoming market conditions. A short-term forecast of median days on market could provide additional information for discussions about pricing, marketing periods, negotiations, and buyer or seller expectations.
