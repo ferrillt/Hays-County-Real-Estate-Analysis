@@ -8,6 +8,12 @@ The project follows an end-to-end data science process that includes data acquis
 
 **Course:** DSC 680 — Applied Data Science
 
+## Related Article
+
+[Why a More Complex Model Isn’t Always a Better Forecast](YOUR_MEDIUM_ARTICLE_URL)
+
+A short discussion of the project’s findings and why model evaluation matters more than model complexity.
+
 ## Business Problem
 
 Historical housing reports describe conditions that have already occurred, but real estate professionals must also prepare clients for upcoming market conditions. A short-term forecast of median days on market could provide additional information for discussions about pricing, marketing periods, negotiations, and buyer or seller expectations.
