@@ -10,7 +10,7 @@ The project follows an end-to-end data science process that includes data acquis
 
 ## Related Article
 
-[Why a More Complex Model Isn’t Always a Better Forecast](YOUR_MEDIUM_ARTICLE_URL)
+[Why a More Complex Model Isn’t Always a Better Forecast](https://medium.com/@ferrill.teresa/why-a-more-complex-model-isnt-always-a-better-forecast-e5a2d3b9ec71)
 
 A short discussion of the project’s findings and why model evaluation matters more than model complexity.
 
