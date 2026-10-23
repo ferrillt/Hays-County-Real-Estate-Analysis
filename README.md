@@ -193,9 +193,8 @@ Hays-County-Real-Estate-Analysis/
     ├── SensitivityResults.png
     ├── StandardizedRidgeRegressionCoefficients.png
     └── TestPeriodPrediction.png
-└── presentations/
+└── presentation/
     └── HaysCountyRealEstateAnalysisPresentation.pdf
-    └── HaysCountyRealEstateAnalysisPresentation_withAudio.pptx
 ```
 
 The first two data files must be downloaded separately and are excluded from GitHub. The remaining three data files are created by the notebook and included in the repository.  
