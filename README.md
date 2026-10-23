@@ -167,8 +167,6 @@ Hays-County-Real-Estate-Analysis/
 ├── .gitignore
 ├── README.md
 ├── requirements.txt
-├── analysis/
-│   └── HaysCountyRealEstateAnalysis.ipynb
 ├── data/
 │   ├── FreddieMac_1971-2026_historicalweeklydata.csv
 │   ├── RDC_Inventory_Core_Metrics_County_History.csv
@@ -193,6 +191,8 @@ Hays-County-Real-Estate-Analysis/
     ├── SensitivityResults.png
     ├── StandardizedRidgeRegressionCoefficients.png
     └── TestPeriodPrediction.png
+├── notebook/
+│   └── HaysCountyRealEstateAnalysis.ipynb
 └── presentation/
     └── HaysCountyRealEstateAnalysisPresentation.pdf
 ```
@@ -300,7 +300,7 @@ The analysis uses:
 ## Running the Analysis
 
 After placing both original source files in the `data` folder, open the
-[analysis notebook](analysis/HaysCountyRealEstateAnalysis.ipynb).
+[analysis notebook](notebook/HaysCountyRealEstateAnalysis.ipynb).
 
 Run the notebook in order from the first cell through the final cell.
 
